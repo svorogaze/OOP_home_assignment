@@ -150,6 +150,7 @@
     <ClCompile Include="bank.cpp" />
     <ClCompile Include="clerk.cpp" />
     <ClCompile Include="client.cpp" />
+    <ClCompile Include="globals.cpp" />
     <ClCompile Include="imgui\imgui.cpp" />
     <ClCompile Include="imgui\imgui_demo.cpp" />
     <ClCompile Include="imgui\imgui_draw.cpp" />
@@ -162,6 +163,7 @@
     <ClInclude Include="bank.h" />
     <ClInclude Include="clerk.h" />
     <ClInclude Include="client.h" />
+    <ClInclude Include="globals.hpp" />
     <ClInclude Include="imgui\imconfig.h" />
     <ClInclude Include="imgui\imgui.h" />
     <ClInclude Include="imgui\imgui_impl_dx11.h" />

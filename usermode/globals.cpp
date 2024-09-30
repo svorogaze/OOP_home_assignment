@@ -8,5 +8,5 @@ namespace Globals {
 	int min_client_time = 2;
 	int max_client_time = 30;
 	int created_clients = 0;
-	std::mt19937 random(std::random_device());
+	std::mt19937 random(1337);
 }
