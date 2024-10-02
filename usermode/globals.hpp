@@ -1,5 +1,6 @@
 #include <cstdint>
 #include <random>
+#include "bank.h"
 namespace Globals {
 	extern int n, k;
 	extern int step;
@@ -9,4 +10,5 @@ namespace Globals {
 	extern int max_client_time;
 	extern int created_clients;
 	extern std::mt19937 random;
+	extern Bank bank;
 }

@@ -5,6 +5,7 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 #pragma comment(lib, "d3d11.lib")
+#include "globals.hpp"
 Overlay overlay;
 // Forward declare message handler from imgui_impl_win32.cpp
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd,
@@ -141,6 +142,7 @@ void Overlay::draw() {
     ImGui::Begin("Overlay", nullptr, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoScrollbar | 
         ImGuiWindowFlags_NoInputs | ImGuiWindowFlags_NoBackground | ImGuiWindowFlags_NoMouseInputs | 
         ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoDecoration);
+    ImGui::GetBackgroundDrawList()->AddRectFilled(ImVec2(0, 0), ImVec2(1920, 1080), ImColor(255, 255, 255));
 
 }
 
@@ -148,6 +150,15 @@ void Overlay::render() {
     ImGui::End();
     if (mainmenu) {
         ImGui::Begin("Controls(close by pressing INSERT)");
+        ImGui::SliderInt("N", &Globals::n, 2, 7);
+        ImGui::SliderInt("K", &Globals::k, 10, 25);
+        ImGui::SliderInt("Step(in minutes)", &Globals::step, 1, 60);
+        ImGui::SliderInt("Min client cost", &Globals::min_client_cost, 3000, 50000);
+        ImGui::SliderInt("Max client cost", &Globals::max_client_cost, 3000, 50000);
+        ImGui::SliderInt("Min client time", &Globals::min_client_time, 2, 30);
+        ImGui::SliderInt("Max client time", &Globals::max_client_time, 2, 30);
+        ImGui::Text("Profits: %d", Globals::bank.get_profits());
+        ImGui::Text("Lost profits: %d", Globals::bank.get_lost_profits());
         ImGui::End();
     }
     ImGui::Render();

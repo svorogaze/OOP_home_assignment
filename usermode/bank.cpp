@@ -1,6 +1,12 @@
 #include "bank.h"
+#include "globals.hpp"
 void Bank::add_client(Client c) {
-	clients_queue.push_back(c);
+	if (clients_queue.size() >= Globals::k) {
+		lost_profits += c.get_cost();
+	}
+	else {
+		clients_queue.push_back(c);
+	}
 }
 
 void Bank::process_clients(int cur_time) {
@@ -15,4 +21,12 @@ void Bank::process_clients(int cur_time) {
 			}
 		}
 	}
+}
+
+int Bank::get_profits() {
+	return total_profits;
+}
+
+int Bank::get_lost_profits() {
+	return lost_profits;
 }
