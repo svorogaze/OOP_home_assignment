@@ -12,7 +12,7 @@ void Clerk::set_last_client(Client c) {
 	current_client = c;
 }
 
-Client Clerk::get_last_client() {
+Client& Clerk::get_last_client() {
 	return current_client;
 }
 

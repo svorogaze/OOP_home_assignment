@@ -6,6 +6,7 @@
 #include "stb_image.h"
 #pragma comment(lib, "d3d11.lib")
 #include "globals.hpp"
+#include <algorithm>
 Overlay overlay;
 // Forward declare message handler from imgui_impl_win32.cpp
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd,
@@ -137,8 +138,8 @@ void Overlay::draw() {
     ImGui_ImplWin32_NewFrame();
     ImGui::NewFrame();
     // do stuff here
-    ImGui::SetNextWindowSize(ImVec2(1920, 1080));
-    ImGui::SetNextWindowPos(ImVec2(0, 0));
+    //ImGui::SetNextWindowSize(ImVec2(1280, 720));
+    //ImGui::SetNextWindowPos(ImVec2(0, 0));
     ImGui::Begin("Overlay", nullptr, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoScrollbar | 
         ImGuiWindowFlags_NoInputs | ImGuiWindowFlags_NoBackground | ImGuiWindowFlags_NoMouseInputs | 
         ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoDecoration);
@@ -157,6 +158,8 @@ void Overlay::render() {
         ImGui::SliderInt("Max client cost", &Globals::max_client_cost, 3000, 50000);
         ImGui::SliderInt("Min client time", &Globals::min_client_time, 2, 30);
         ImGui::SliderInt("Max client time", &Globals::max_client_time, 2, 30);
+        ImGui::SliderInt("Start delay between two clients", &Globals::start_delay, 1, 60);
+        ImGui::SliderInt("Middle of day delay between two clients", &Globals::middle_delay, 1, 60);
         ImGui::Text("Profits: %d", Globals::bank.get_profits());
         ImGui::Text("Lost profits: %d", Globals::bank.get_lost_profits());
         ImGui::End();

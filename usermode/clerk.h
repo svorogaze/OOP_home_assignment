@@ -10,7 +10,7 @@ public:
 
 	void set_last_client(Client c);
 
-	Client get_last_client();
+	Client& get_last_client();
 
 	void process_new_client(Client c, int cur_time);
 

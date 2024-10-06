@@ -1,18 +1,24 @@
 #include "client.h"
 #include "globals.hpp"
-
+#include "overlay/overlay.h"
+#include <string>
 Client::Client() {
 	time = (Globals::random() % (Globals::max_client_time - Globals::min_client_time + 1)) + Globals::min_client_time;
 	cost = (Globals::random() % (Globals::max_client_cost - Globals::min_client_cost + 1)) + Globals::min_client_cost;
-	number = ++Globals::created_clients;
+}
+
+void Client::draw(int tx, int ty) const {
+	ImGui::GetWindowDrawList()->AddCircle(ImVec2(tx, ty), 30.f, ImColor(0, 0, 0));
+	std::string number_string = std::to_string(number);
+	ImGui::GetWindowDrawList()->AddText(ImVec2(tx - 10, ty - 6), ImColor(0, 0, 0), number_string.c_str());
 }
 
 
-int Client::get_time() {
+int Client::get_time() const {
 	return time;
 }
 
-int Client::get_cost() {
+int Client::get_cost() const {
 	return cost;
 }
 
@@ -28,6 +34,6 @@ void Client::set_number(int x) {
 	number = x;
 }
 
-int Client::get_number() {
+int Client::get_number() const {
 	return number;
 }

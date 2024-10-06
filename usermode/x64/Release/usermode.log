@@ -1,15 +1,11 @@
 ﻿  bank.cpp
-  client.cpp
-  globals.cpp
-  overlay.cpp
-C:\Users\vvzag\source\repos\usermode\usermode\overlay\overlay.cpp(257,72): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\vvzag\source\repos\usermode\usermode\overlay\overlay.cpp(257,68): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\vvzag\source\repos\usermode\usermode\overlay\overlay.cpp(257,56): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\vvzag\source\repos\usermode\usermode\overlay\overlay.cpp(257,52): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  usermode.cpp
+C:\Users\vvzag\source\repos\usermode\usermode\bank.cpp(43,66): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\vvzag\source\repos\usermode\usermode\bank.cpp(43,62): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\vvzag\source\repos\usermode\usermode\bank.cpp(43,50): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\vvzag\source\repos\usermode\usermode\bank.cpp(43,46): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   Generating code
-  369 of 1655 functions (22.3%) were compiled, the rest were copied from previous compilation.
-    123 functions were new in current compilation
-    84 functions had inline decision re-evaluated but remain unchanged
+  1 of 1792 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    26 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   usermode.vcxproj -> C:\Users\vvzag\source\repos\usermode\x64\Release\usermode.exe

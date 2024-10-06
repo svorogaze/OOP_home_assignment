@@ -3,9 +3,9 @@ class Client {
 public:
 
 	Client();
-	int get_time();
+	int get_time() const;
 
-	int get_cost();
+	int get_cost() const;
 
 	void set_time(int x);
 
@@ -13,7 +13,9 @@ public:
 
 	void set_number(int x);
 
-	int get_number();
+	int get_number() const;
+
+	void draw(int tx, int ty) const;
 
 private:
 	int cost = 0;

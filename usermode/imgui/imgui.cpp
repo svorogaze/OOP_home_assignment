@@ -4993,6 +4993,8 @@ void ImGui::NewFrame()
     g.GroupStack.resize(0);
 
     // [DEBUG] Update debug features
+    //causes crash so i commented it
+    /*
 #ifndef IMGUI_DISABLE_DEBUG_TOOLS
     UpdateDebugToolItemPicker();
     UpdateDebugToolStackQueries();
@@ -5009,6 +5011,7 @@ void ImGui::NewFrame()
         g.DebugLogAutoDisableFlags = ImGuiDebugLogFlags_None;
     }
 #endif
+*/
 
     // Create implicit/fallback window - which we will only render it if the user has added something to it.
     // We don't use "Debug" to avoid colliding with user trying to create a "Debug" window with custom flags.

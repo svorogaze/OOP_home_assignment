@@ -9,6 +9,8 @@ namespace Globals {
 	extern int min_client_time;
 	extern int max_client_time;
 	extern int created_clients;
+	extern int start_delay;
+	extern int middle_delay;
 	extern std::mt19937 random;
 	extern Bank bank;
 }
