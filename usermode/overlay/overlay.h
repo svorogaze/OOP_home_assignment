@@ -7,6 +7,7 @@
 #include <Windows.h>
 #include <utility>
 #include <CommCtrl.h>
+#include "../bank.h"
 #pragma comment(lib, "d3d11.lib") 
 
 class Overlay {
@@ -35,7 +36,7 @@ public:
 	WNDCLASSEXW wc;
 	UINT ResizeWidth = 0, ResizeHeight = 0;
 	void draw();
-	void render();
+	void render(Bank& bank);
 	Overlay();
 	~Overlay();
 	ImDrawList* getdrawlist();

@@ -15,6 +15,10 @@ public:
 
 	void draw();
 
+	void do_one_step();
+
+	void do_step(int amount);
+
 	std::vector<Clerk> clerks;
 	int current_time = 0;
 private:

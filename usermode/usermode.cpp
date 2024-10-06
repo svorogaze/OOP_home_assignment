@@ -19,6 +19,6 @@ int main(int, char**) {
 	while (true) {
 		overlay.draw();
 		bank.draw();
-		overlay.render();
+		overlay.render(bank);
 	}
 }

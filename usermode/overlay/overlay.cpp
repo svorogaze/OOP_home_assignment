@@ -147,7 +147,7 @@ void Overlay::draw() {
 
 }
 
-void Overlay::render() {  
+void Overlay::render(Bank& bank) {  
     ImGui::End();
     if (mainmenu) {
         ImGui::Begin("Controls(close by pressing INSERT)");
@@ -162,6 +162,9 @@ void Overlay::render() {
         ImGui::SliderInt("Middle of day delay between two clients", &Globals::middle_delay, 1, 60);
         ImGui::Text("Profits: %d", Globals::bank.get_profits());
         ImGui::Text("Lost profits: %d", Globals::bank.get_lost_profits());
+        if (ImGui::Button("Do one step")) {
+            bank.do_step(Globals::step);
+        }
         ImGui::End();
     }
     ImGui::Render();

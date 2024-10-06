@@ -34,6 +34,14 @@ int Bank::get_lost_profits() {
 	return lost_profits;
 }
 
+void Bank::do_one_step() {
+
+}
+
+void Bank::do_step(int amount) {
+
+}
+
 void Bank::draw() {
 	int we = 70;
 	for (int i = 0; i < clerks.size(); ++i) {
