@@ -13,4 +13,6 @@ namespace Globals {
 	int middle_delay = 5;
 	std::mt19937 random(1337);
 	Bank bank;
+
+	int today = 0; // 0 for Monday, 6 for Sunday
 }

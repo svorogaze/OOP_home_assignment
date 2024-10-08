@@ -175,6 +175,9 @@
     <ClInclude Include="imgui\stb_image.h" />
     <ClInclude Include="overlay\overlay.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="imgui.ini" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -7,6 +7,14 @@ void Bank::add_client(const Client& c) {
 	if (clients_queue.size() >= Globals::k) {
 		lost_profits += c.get_cost();
 	}
+	else if (clients_queue.size() >= 7) {
+		if (Globals::random() % 3) {
+			clients_queue.push_back(c);
+		}
+		else {
+			lost_profits += c.get_cost();
+		}
+	}
 	else {
 		clients_queue.push_back(c);
 	}
@@ -35,11 +43,34 @@ int Bank::get_lost_profits() {
 }
 
 void Bank::do_one_step() {
-
+	if (current_time <= (Globals::today < 5 ? 8 : (Globals::today == 5 ? 6 : 0)) * 60) {
+		current_time++;
+		if (next_client_time <= 0) {
+			next_client_time = 0;
+			while (next_client_time == 0) {
+				add_client(Client());
+				next_client_time = Globals::random() % 11;
+			}
+		}
+		else {
+			next_client_time--;
+		}
+		process_clients();
+	}
+	else if (not clients_queue.empty()) {
+		current_time++;
+		process_clients();
+	}
+	else {
+		Globals::today = (Globals::today + 1) % 7;
+		current_time = 0;
+	}
 }
 
 void Bank::do_step(int amount) {
-
+	while (amount--) {
+		do_one_step();
+	}
 }
 
 void Bank::draw() {

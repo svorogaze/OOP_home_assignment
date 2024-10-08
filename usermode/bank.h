@@ -28,4 +28,5 @@ private:
 	int processed_clients = 0;
 	int lost_profits = 0;
 	std::pair<int, int> display;
+	int next_client_time = 0;
 };

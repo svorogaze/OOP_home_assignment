@@ -13,4 +13,5 @@ namespace Globals {
 	extern int middle_delay;
 	extern std::mt19937 random;
 	extern Bank bank;
+	extern int today;
 }
