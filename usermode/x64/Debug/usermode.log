@@ -1,19 +1,6 @@
-﻿  bank.cpp
-C:\Users\qwert\source\repos\gh\OOP_home_assignment\usermode\bank.cpp(80,66): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-C:\Users\qwert\source\repos\gh\OOP_home_assignment\usermode\bank.cpp(80,62): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-C:\Users\qwert\source\repos\gh\OOP_home_assignment\usermode\bank.cpp(80,50): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-C:\Users\qwert\source\repos\gh\OOP_home_assignment\usermode\bank.cpp(80,46): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-  client.cpp
-C:\Users\qwert\source\repos\gh\OOP_home_assignment\usermode\client.cpp(11,51): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-C:\Users\qwert\source\repos\gh\OOP_home_assignment\usermode\client.cpp(11,47): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-C:\Users\qwert\source\repos\gh\OOP_home_assignment\usermode\client.cpp(13,57): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-C:\Users\qwert\source\repos\gh\OOP_home_assignment\usermode\client.cpp(13,48): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-  globals.cpp
-  overlay.cpp
-C:\Users\qwert\source\repos\gh\OOP_home_assignment\usermode\overlay\overlay.cpp(263,72): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-C:\Users\qwert\source\repos\gh\OOP_home_assignment\usermode\overlay\overlay.cpp(263,68): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-C:\Users\qwert\source\repos\gh\OOP_home_assignment\usermode\overlay\overlay.cpp(263,56): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-C:\Users\qwert\source\repos\gh\OOP_home_assignment\usermode\overlay\overlay.cpp(263,52): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-  usermode.cpp
-  Создание кода...
-  usermode.vcxproj -> C:\Users\qwert\source\repos\gh\OOP_home_assignment\x64\Debug\usermode.exe
+﻿  overlay.cpp
+C:\Users\vvzag\source\repos\usermode\usermode\overlay\overlay.cpp(265,72): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\vvzag\source\repos\usermode\usermode\overlay\overlay.cpp(265,68): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\vvzag\source\repos\usermode\usermode\overlay\overlay.cpp(265,56): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\vvzag\source\repos\usermode\usermode\overlay\overlay.cpp(265,52): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  usermode.vcxproj -> C:\Users\vvzag\source\repos\usermode\x64\Debug\usermode.exe

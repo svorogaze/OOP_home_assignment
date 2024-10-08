@@ -1,7 +1,12 @@
-﻿  usermode.cpp
+﻿  bank.cpp
+C:\Users\vvzag\source\repos\usermode\usermode\bank.cpp(74,25): warning C4267: '-=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\vvzag\source\repos\usermode\usermode\bank.cpp(92,66): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\vvzag\source\repos\usermode\usermode\bank.cpp(92,62): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\vvzag\source\repos\usermode\usermode\bank.cpp(92,50): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\vvzag\source\repos\usermode\usermode\bank.cpp(92,46): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   Generating code
-  8 of 1795 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
-    2 functions were new in current compilation
+  4 of 1819 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
     27 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   usermode.vcxproj -> C:\Users\vvzag\source\repos\usermode\x64\Release\usermode.exe

@@ -9,6 +9,7 @@ void Bank::add_client(const Client& c) {
 	}
 	else if (clients_queue.size() >= 7) {
 		if (Globals::random() % 3) {
+			total_profits += c.get_cost();
 			clients_queue.push_back(c);
 		}
 		else {
@@ -16,6 +17,7 @@ void Bank::add_client(const Client& c) {
 		}
 	}
 	else {
+		total_profits += c.get_cost();
 		clients_queue.push_back(c);
 	}
 }
@@ -28,7 +30,7 @@ void Bank::process_clients() {
 			clerks[i].process_new_client(cur_client, current_time);
 			processed_clients++;
 			display.first = cur_client.get_number();
-			display.second = i;
+			display.second = i + 1;
 			clients_queue.erase(clients_queue.begin());
 		}
 	}
@@ -42,14 +44,27 @@ int Bank::get_lost_profits() {
 	return lost_profits;
 }
 
+int Bank::get_day_length() {
+	if (Globals::today < 5) {
+		return 8 * 60;
+	}
+	if (Globals::today == 5) {
+		return 6 * 60;
+	}
+	return -1;
+}
+
 void Bank::do_one_step() {
-	if (current_time <= (Globals::today < 5 ? 8 : (Globals::today == 5 ? 6 : 0)) * 60) {
+	if (current_time <= get_day_length()) {
 		current_time++;
 		if (next_client_time <= 0) {
 			next_client_time = 0;
 			while (next_client_time == 0) {
-				add_client(Client());
-				next_client_time = Globals::random() % 11;
+				Client new_client;
+				new_client.set_number(++Globals::created_clients);
+				add_client(new_client);
+				double coef = std::abs(current_time - get_day_length() / 2) / (double)(get_day_length() / 2); // coefficent from 0 to 1, indicating how close we are to the middle day(0 is the closest)
+				next_client_time = Globals::random() % (int)(Globals::middle_delay + (Globals::start_delay - Globals::middle_delay) * coef);
 			}
 		}
 		else {
@@ -57,11 +72,12 @@ void Bank::do_one_step() {
 		}
 		process_clients();
 	}
-	else if (not clients_queue.empty()) {
+	else if (!clients_queue.empty()) {
 		current_time++;
 		process_clients();
 	}
 	else {
+		total_profits -= 2000 * clerks.size();
 		Globals::today = (Globals::today + 1) % 7;
 		current_time = 0;
 	}
@@ -93,6 +109,6 @@ void Bank::draw() {
 	std::string table = std::to_string(display.first);
 	table += " to ";
 	table += std::to_string(display.second);
-	ImGui::GetWindowDrawList()->AddRect(ImVec2(600, 50), ImVec2(680, 62), ImColor(0, 0, 0));
-	ImGui::GetWindowDrawList()->AddText(ImVec2(601, 49), ImColor(0, 0, 0), table.c_str());
+	ImGui::GetWindowDrawList()->AddRect(ImVec2(600, 50), ImVec2(680, 70), ImColor(0, 0, 0));
+	ImGui::GetWindowDrawList()->AddText(ImVec2(601, 53), ImColor(0, 0, 0), table.c_str());
 }

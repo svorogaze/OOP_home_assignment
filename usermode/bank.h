@@ -19,6 +19,8 @@ public:
 
 	void do_step(int amount);
 
+	int get_day_length();
+
 	std::vector<Clerk> clerks;
 	int current_time = 0;
 private:

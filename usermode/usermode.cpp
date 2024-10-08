@@ -9,14 +9,10 @@
 #include "globals.hpp"
 int main(int, char**) {
 	Bank bank;
-	bank.clerks.assign(Globals::n, Clerk());
-	bank.clerks[0].set_finish_time(100);
-	bank.clerks[0].set_last_client(Client());
-	Globals::k = 25;
-	for (int i = 0; i < 30; ++i) {
-		bank.add_client(Client());
-	}
 	while (true) {
+		int to_sz = Globals::n;
+		while (bank.clerks.size() > to_sz) bank.clerks.pop_back();
+		while (bank.clerks.size() < to_sz) bank.clerks.push_back(Clerk());
 		overlay.draw();
 		bank.draw();
 		overlay.render(bank);
