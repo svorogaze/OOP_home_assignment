@@ -26,9 +26,9 @@ public:
 private:
 	
 	std::vector<Client> clients_queue;
-	int total_profits = 0;
-	int processed_clients = 0;
-	int lost_profits = 0;
+	int64_t total_profits = 0;
+	int64_t processed_clients = 0;
+	int64_t lost_profits = 0;
 	std::pair<int, int> display;
 	int next_client_time = 0;
 };

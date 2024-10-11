@@ -1,6 +1,2 @@
-﻿  overlay.cpp
-C:\Users\vvzag\source\repos\usermode\usermode\overlay\overlay.cpp(265,72): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\vvzag\source\repos\usermode\usermode\overlay\overlay.cpp(265,68): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\vvzag\source\repos\usermode\usermode\overlay\overlay.cpp(265,56): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\vvzag\source\repos\usermode\usermode\overlay\overlay.cpp(265,52): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+﻿  globals.cpp
   usermode.vcxproj -> C:\Users\vvzag\source\repos\usermode\x64\Debug\usermode.exe

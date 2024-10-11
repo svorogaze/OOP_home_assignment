@@ -7,6 +7,7 @@ void Bank::add_client(const Client& c) {
 	if (clients_queue.size() >= Globals::k) {
 		lost_profits += c.get_cost();
 	}
+	/*
 	else if (clients_queue.size() >= 7) {
 		if (Globals::random() % 3) {
 			total_profits += c.get_cost();
@@ -16,6 +17,7 @@ void Bank::add_client(const Client& c) {
 			lost_profits += c.get_cost();
 		}
 	}
+	*/
 	else {
 		total_profits += c.get_cost();
 		clients_queue.push_back(c);
@@ -80,6 +82,8 @@ void Bank::do_one_step() {
 		total_profits -= 2000 * clerks.size();
 		Globals::today = (Globals::today + 1) % 7;
 		current_time = 0;
+		Globals::created_clients = 0;
+		std::fill(clerks.begin(), clerks.end(), Clerk());
 	}
 }
 

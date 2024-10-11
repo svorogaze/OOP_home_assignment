@@ -148,7 +148,7 @@ void Overlay::draw() {
 }
 
 void Overlay::render(Bank& bank) {
-    static std::vector<std::string> days = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday" };
+    static std::vector<std::string> days = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
     ImGui::End();
     if (mainmenu) {
         ImGui::Begin("Controls(close by pressing INSERT)");
@@ -163,7 +163,7 @@ void Overlay::render(Bank& bank) {
         ImGui::SliderInt("Middle of day delay between two clients", &Globals::middle_delay, 1, 60);
         ImGui::Text("Profits: %d", bank.get_profits());
         ImGui::Text("Lost profits: %d", bank.get_lost_profits());
-        ImGui::Text("Today is %s\n%d hours %d minutes of workday passed", days[Globals::today].c_str(), bank.current_time / 60, bank.current_time % 60);
+        ImGui::Text("Today is %s\n%d hours %d minutes of workday passed", days[Globals::today % 7].c_str(), bank.current_time / 60, bank.current_time % 60);
         if (ImGui::Button("Do one step")) {
             bank.do_step(Globals::step);
         }
