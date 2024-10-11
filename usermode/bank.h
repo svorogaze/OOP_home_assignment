@@ -23,6 +23,10 @@ public:
 
 	std::vector<Clerk> clerks;
 	int current_time = 0;
+	int64_t sum_length = 0;
+	int64_t sum_time = 0;
+	int64_t max_queue_size = 0;
+	int64_t sum_free_clerks = 0;
 private:
 	
 	std::vector<Client> clients_queue;

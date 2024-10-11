@@ -3,6 +3,7 @@
 #include "overlay/overlay.h"
 #include <string>
 #include <algorithm>
+#include <iostream>
 void Bank::add_client(const Client& c) {
 	if (clients_queue.size() >= Globals::k) {
 		lost_profits += c.get_cost();
@@ -56,6 +57,14 @@ int Bank::get_day_length() {
 
 void Bank::do_one_step() {
 	if (current_time <= get_day_length()) {
+		for (auto c : clerks) {
+			if (c.get_finish_time() < current_time) {
+				sum_free_clerks += 1;
+			}
+		}
+		sum_time++;
+		sum_length += clients_queue.size();
+		max_queue_size = max(max_queue_size, clients_queue.size());
 		current_time++;
 		if (next_client_time <= 0) {
 			next_client_time = 0;

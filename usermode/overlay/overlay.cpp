@@ -166,8 +166,15 @@ void Overlay::render(Bank& bank) {
         ImGui::Text("Profits: %d", bank.get_profits());
         ImGui::Text("Lost profits: %d", bank.get_lost_profits());
         ImGui::Text("Today is %s\n%d hours %d minutes of workday passed", days[Globals::today % 7].c_str(), bank.current_time / 60, bank.current_time % 60);
+        ImGui::Text("Average length of queue is %f, min length is 0, max length is %d", (float)bank.sum_length / max(bank.sum_time, 1), bank.max_queue_size);
+        ImGui::Text("On average %f clerks are working", (long double)bank.sum_free_clerks / max(bank.sum_time, 1));
         if (ImGui::Button("Do one step")) {
             bank.do_step(Globals::step);
+        }
+        if (ImGui::Button("Do month")) {
+            for (int i = 0; i < (60 * 8 * 5 - 120) * 4; i += Globals::step) {
+                bank.do_step(Globals::step);
+            }
         }
         ImGui::End();
     }
