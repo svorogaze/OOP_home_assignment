@@ -159,6 +159,8 @@ void Overlay::render(Bank& bank) {
         ImGui::SliderInt("Max client cost", &Globals::max_client_cost, 3000, 50000);
         ImGui::SliderInt("Min client time", &Globals::min_client_time, 2, 30);
         ImGui::SliderInt("Max client time", &Globals::max_client_time, 2, 30);
+        Globals::max_client_cost = max(Globals::max_client_cost, Globals::min_client_cost);
+        Globals::max_client_time = max(Globals::max_client_time, Globals::min_client_time);
         ImGui::SliderInt("Start delay between two clients", &Globals::start_delay, 1, 60);
         ImGui::SliderInt("Middle of day delay between two clients", &Globals::middle_delay, 1, 60);
         ImGui::Text("Profits: %d", bank.get_profits());

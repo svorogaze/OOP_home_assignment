@@ -1,2 +1,8 @@
-﻿  globals.cpp
+﻿  bank.cpp
+C:\Users\vvzag\source\repos\usermode\usermode\bank.cpp(40,9): warning C4244: 'return': conversion from 'int64_t' to 'int', possible loss of data
+C:\Users\vvzag\source\repos\usermode\usermode\bank.cpp(44,9): warning C4244: 'return': conversion from 'int64_t' to 'int', possible loss of data
+C:\Users\vvzag\source\repos\usermode\usermode\bank.cpp(108,66): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\vvzag\source\repos\usermode\usermode\bank.cpp(108,62): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\vvzag\source\repos\usermode\usermode\bank.cpp(108,50): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\vvzag\source\repos\usermode\usermode\bank.cpp(108,46): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   usermode.vcxproj -> C:\Users\vvzag\source\repos\usermode\x64\Debug\usermode.exe

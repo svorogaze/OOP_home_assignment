@@ -7,7 +7,6 @@ void Bank::add_client(const Client& c) {
 	if (clients_queue.size() >= Globals::k) {
 		lost_profits += c.get_cost();
 	}
-	/*
 	else if (clients_queue.size() >= 7) {
 		if (Globals::random() % 3) {
 			total_profits += c.get_cost();
@@ -17,7 +16,6 @@ void Bank::add_client(const Client& c) {
 			lost_profits += c.get_cost();
 		}
 	}
-	*/
 	else {
 		total_profits += c.get_cost();
 		clients_queue.push_back(c);
@@ -75,6 +73,11 @@ void Bank::do_one_step() {
 		process_clients();
 	}
 	else if (!clients_queue.empty()) {
+		for (auto& c : clients_queue) {
+			total_profits -= c.get_cost();
+			lost_profits += c.get_cost();
+		}
+		clients_queue.clear();
 		current_time++;
 		process_clients();
 	}
@@ -113,6 +116,9 @@ void Bank::draw() {
 	std::string table = std::to_string(display.first);
 	table += " to ";
 	table += std::to_string(display.second);
+	if (display.second == 0) {
+		table = "";
+	}
 	ImGui::GetWindowDrawList()->AddRect(ImVec2(600, 50), ImVec2(680, 70), ImColor(0, 0, 0));
 	ImGui::GetWindowDrawList()->AddText(ImVec2(601, 53), ImColor(0, 0, 0), table.c_str());
 }
