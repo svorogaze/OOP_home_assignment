@@ -111,10 +111,12 @@ void Bank::draw() {
 		int x1 = (i * 2) * we + we;
 		int x2 = (i * 2 + 1) * we + we;
 		int y1 = 100, y2 = 100 + we;
-		ImGui::GetWindowDrawList()->AddRect(ImVec2(x1, y1), ImVec2(x2, y2), ImColor(0, 0, 0));
+		ImColor fill = ImColor(0, 255, 0);
 		if (!clerks[i].is_finished(current_time)) {
 			clerks[i].get_last_client().draw((x1 + x2) / 2, y2 + 30);
+			fill = ImColor(255, 0, 0);
 		}
+		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(x1, y1), ImVec2(x2, y2), fill);
 	}
 	int cx = 30, cy = 280;
 	for (int i = 0; i < clients_queue.size(); ++i) {
