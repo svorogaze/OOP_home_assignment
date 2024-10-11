@@ -17,6 +17,7 @@ Bank::Bank() {
 			}
 			if (min_dist < 4900) continue;
 			places[i].x = randx, places[i].y = randy;
+			places[i].free = true;
 			break;
 		}
 	}
@@ -34,7 +35,7 @@ void Bank::add_client(Client& c) {
 		while (true) {
 			if (places[index].free) {
 				cnt--;
-				if (cnt == 0) break;
+				if (cnt <= 0) break;
 			}
 			index = (index + 1) % places.size();
 		}
@@ -48,8 +49,12 @@ void Bank::add_client(Client& c) {
 }
 
 void Bank::process_clients() {
+	int we = 50;
 	for (int i = 0; i < clerks.size() && !clients_queue.empty(); ++i) {
 		if (clerks[i].is_finished(current_time)) {
+			int x1 = (i * 2) * we + we;
+			int x2 = (i * 2 + 1) * we + we;
+			int y1 = 100, y2 = 100 + we;
 			auto cur_client = clients_queue[0];
 			total_profits += cur_client.get_cost();
 			clerks[i].process_new_client(cur_client, current_time);
@@ -63,7 +68,6 @@ void Bank::process_clients() {
 					break;
 				}
 			}
-			cur_client.position_x = ; //CHANGE HERE
 		}
 	}
 }
@@ -144,6 +148,8 @@ void Bank::draw() {
 		int y1 = 100, y2 = 100 + we;
 		ImColor fill = ImColor(0, 255, 0);
 		if (!clerks[i].is_finished(current_time)) {
+			clerks[i].get_last_client().position_x = (x1 + x2) / 2;
+			clerks[i].get_last_client().position_y = y2 + 30; 
 			clerks[i].get_last_client().draw();
 			fill = ImColor(255, 0, 0);
 		}
