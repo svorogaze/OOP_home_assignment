@@ -10,7 +10,7 @@ Client::Client() {
 void Client::draw() const {
 	ImGui::GetWindowDrawList()->AddCircle(ImVec2(position_x, position_y), 20.f, ImColor(0, 0, 0));
 	std::string number_string = std::to_string(number);
-	ImGui::GetWindowDrawList()->AddText(ImVec2(position_x - 6, position_y - 4), ImColor(0, 0, 0), number_string.c_str());
+	ImGui::GetWindowDrawList()->AddText(ImVec2(position_x - 5, position_y - 7), ImColor(0, 0, 0), number_string.c_str());
 }
 
 

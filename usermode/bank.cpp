@@ -31,7 +31,6 @@ void Bank::add_client(Client& c) {
 		total_profits += c.get_cost();
 		int cnt = Globals::random() % places.size();
 		int index = 0;
-		process_clients();
 		while (true) {
 			if (places[index].free) {
 				cnt--;
