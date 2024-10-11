@@ -161,8 +161,8 @@ void Overlay::render(Bank& bank) {
         ImGui::SliderInt("Max client time", &Globals::max_client_time, 2, 30);
         Globals::max_client_cost = max(Globals::max_client_cost, Globals::min_client_cost);
         Globals::max_client_time = max(Globals::max_client_time, Globals::min_client_time);
-        ImGui::SliderInt("Start delay between two clients", &Globals::start_delay, 1, 60);
-        ImGui::SliderInt("Middle of day delay between two clients", &Globals::middle_delay, 1, 60);
+        ImGui::SliderInt("Start max delay", &Globals::start_delay, 1, 60);
+        ImGui::SliderInt("Middle of day max delay", &Globals::middle_delay, 1, 60);
         ImGui::Text("Profits: %d", bank.get_profits());
         ImGui::Text("Lost profits: %d", bank.get_lost_profits());
         ImGui::Text("Today is %s\n%d hours %d minutes of workday passed", days[Globals::today % 7].c_str(), bank.current_time / 60, bank.current_time % 60);
@@ -172,9 +172,7 @@ void Overlay::render(Bank& bank) {
             bank.do_step(Globals::step);
         }
         if (ImGui::Button("Do month")) {
-            for (int i = 0; i < (60 * 8 * 5 - 120) * 4; i += Globals::step) {
-                bank.do_step(Globals::step);
-            }
+            bank.do_step((60 * 8 * 5 - 120) * 4);
         }
         ImGui::End();
     }
