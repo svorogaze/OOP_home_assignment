@@ -1,7 +1,7 @@
 ﻿  bank.cpp
-C:\Users\qwert\source\repos\gh\OOP_home_assignment\usermode\bank.cpp(76,9): warning C4244: return: преобразование "int64_t" в "int", возможна потеря данных
-C:\Users\qwert\source\repos\gh\OOP_home_assignment\usermode\bank.cpp(80,9): warning C4244: return: преобразование "int64_t" в "int", возможна потеря данных
-C:\Users\qwert\source\repos\gh\OOP_home_assignment\usermode\bank.cpp(102,20): warning C4018: >: несоответствие типов со знаком и без знака
+C:\Users\qwert\source\repos\gh\OOP_home_assignment\usermode\bank.cpp(73,9): warning C4244: return: преобразование "int64_t" в "int", возможна потеря данных
+C:\Users\qwert\source\repos\gh\OOP_home_assignment\usermode\bank.cpp(77,9): warning C4244: return: преобразование "int64_t" в "int", возможна потеря данных
+C:\Users\qwert\source\repos\gh\OOP_home_assignment\usermode\bank.cpp(99,20): warning C4018: >: несоответствие типов со знаком и без знака
 C:\Users\qwert\source\repos\gh\OOP_home_assignment\usermode\bank.cpp(156,72): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
 C:\Users\qwert\source\repos\gh\OOP_home_assignment\usermode\bank.cpp(156,68): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
 C:\Users\qwert\source\repos\gh\OOP_home_assignment\usermode\bank.cpp(156,56): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных

@@ -29,9 +29,9 @@ void Bank::add_client(Client& c) {
 	}
 	else if (clients_queue.size() < 7 || Globals::random() % 3) {
 		total_profits += c.get_cost();
-		clients_queue.push_back(c);
 		int cnt = Globals::random() % places.size();
 		int index = 0;
+		process_clients();
 		while (true) {
 			if (places[index].free) {
 				cnt--;
@@ -42,6 +42,7 @@ void Bank::add_client(Client& c) {
 		places[index].free = false;
 		c.position_x = places[index].x;
 		c.position_y = places[index].y;
+		clients_queue.push_back(c);
 	}
 	else {
 		lost_profits += c.get_cost();
@@ -49,25 +50,21 @@ void Bank::add_client(Client& c) {
 }
 
 void Bank::process_clients() {
-	int we = 50;
 	for (int i = 0; i < clerks.size() && !clients_queue.empty(); ++i) {
 		if (clerks[i].is_finished(current_time)) {
-			int x1 = (i * 2) * we + we;
-			int x2 = (i * 2 + 1) * we + we;
-			int y1 = 100, y2 = 100 + we;
 			auto cur_client = clients_queue[0];
-			total_profits += cur_client.get_cost();
-			clerks[i].process_new_client(cur_client, current_time);
-			processed_clients++;
-			display.first = cur_client.get_number();
-			display.second = i + 1;
-			clients_queue.erase(clients_queue.begin());
 			for (auto& place : places) {
 				if (place.x == cur_client.position_x && place.y == cur_client.position_y) {
 					place.free = true;
 					break;
 				}
 			}
+			total_profits += cur_client.get_cost();
+			clerks[i].process_new_client(cur_client, current_time);
+			processed_clients++;
+			display.first = cur_client.get_number();
+			display.second = i + 1;
+			clients_queue.erase(clients_queue.begin());
 		}
 	}
 }
@@ -130,6 +127,9 @@ void Bank::do_one_step() {
 		Globals::today = (Globals::today + 1) % 7;
 		current_time = 0;
 		Globals::created_clients = 0;
+		for (int i = 0; i < places.size(); i++) {
+			places[i].free = true;
+		}
 		std::fill(clerks.begin(), clerks.end(), Clerk());
 	}
 }
