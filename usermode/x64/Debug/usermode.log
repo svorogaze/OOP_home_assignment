@@ -1,9 +1,11 @@
 ﻿  bank.cpp
-C:\Users\vvzag\source\repos\usermode\usermode\bank.cpp(41,9): warning C4244: 'return': conversion from 'int64_t' to 'int', possible loss of data
-C:\Users\vvzag\source\repos\usermode\usermode\bank.cpp(45,9): warning C4244: 'return': conversion from 'int64_t' to 'int', possible loss of data
-C:\Users\vvzag\source\repos\usermode\usermode\bank.cpp(67,20): warning C4018: '>': signed/unsigned mismatch
-C:\Users\vvzag\source\repos\usermode\usermode\bank.cpp(119,72): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\vvzag\source\repos\usermode\usermode\bank.cpp(119,68): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\vvzag\source\repos\usermode\usermode\bank.cpp(119,56): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\vvzag\source\repos\usermode\usermode\bank.cpp(119,52): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  usermode.vcxproj -> C:\Users\vvzag\source\repos\usermode\x64\Debug\usermode.exe
+C:\Users\vvzag\source\repos\usermode\usermode\bank.cpp(71,9): warning C4244: 'return': conversion from 'int64_t' to 'int', possible loss of data
+C:\Users\vvzag\source\repos\usermode\usermode\bank.cpp(75,9): warning C4244: 'return': conversion from 'int64_t' to 'int', possible loss of data
+C:\Users\vvzag\source\repos\usermode\usermode\bank.cpp(97,20): warning C4018: '>': signed/unsigned mismatch
+C:\Users\vvzag\source\repos\usermode\usermode\bank.cpp(146,32): error C2660: 'Client::draw': function does not take 2 arguments
+C:\Users\vvzag\source\repos\usermode\usermode\bank.cpp(149,72): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\vvzag\source\repos\usermode\usermode\bank.cpp(149,68): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\vvzag\source\repos\usermode\usermode\bank.cpp(149,56): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\vvzag\source\repos\usermode\usermode\bank.cpp(149,52): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  usermode.cpp
+  Generating Code...

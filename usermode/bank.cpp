@@ -4,22 +4,46 @@
 #include <string>
 #include <algorithm>
 #include <iostream>
-void Bank::add_client(const Client& c) {
+
+Bank::Bank() {
+	places.resize(25);
+	for (int i = 0; i < places.size(); ++i) {
+		while (true) {
+			int randx = Globals::random() % 1000 + 100;
+			int randy = Globals::random() % 300 + 250;
+			int min_dist = 10000000;
+			for (int j = 0; j < i; ++j) {
+				min_dist = min(min_dist, (randx - places[j].x) * (randx - places[j].x) + (randy - places[j].y) * (randy - places[j].y));
+			}
+			if (min_dist < 4900) continue;
+			places[i].x = randx, places[i].y = randy;
+			break;
+		}
+	}
+}
+
+void Bank::add_client(Client& c) {
 	if (clients_queue.size() >= Globals::k) {
 		lost_profits += c.get_cost();
 	}
-	else if (clients_queue.size() >= 7) {
-		if (Globals::random() % 3) {
-			total_profits += c.get_cost();
-			clients_queue.push_back(c);
-		}
-		else {
-			lost_profits += c.get_cost();
-		}
-	}
-	else {
+	else if (clients_queue.size() < 7 || Globals::random() % 3) {
 		total_profits += c.get_cost();
 		clients_queue.push_back(c);
+		int cnt = Globals::random() % places.size();
+		int index = 0;
+		while (true) {
+			if (places[index].free) {
+				cnt--;
+				if (cnt == 0) break;
+			}
+			index = (index + 1) % places.size();
+		}
+		places[index].free = false;
+		c.position_x = places[index].x;
+		c.position_y = places[index].y;
+	}
+	else {
+		lost_profits += c.get_cost();
 	}
 }
 
@@ -33,6 +57,13 @@ void Bank::process_clients() {
 			display.first = cur_client.get_number();
 			display.second = i + 1;
 			clients_queue.erase(clients_queue.begin());
+			for (auto& place : places) {
+				if (place.x == cur_client.position_x && place.y == cur_client.position_y) {
+					place.free = true;
+					break;
+				}
+			}
+			cur_client.position_x = ; //CHANGE HERE
 		}
 	}
 }
@@ -113,7 +144,7 @@ void Bank::draw() {
 		int y1 = 100, y2 = 100 + we;
 		ImColor fill = ImColor(0, 255, 0);
 		if (!clerks[i].is_finished(current_time)) {
-			clerks[i].get_last_client().draw((x1 + x2) / 2, y2 + 30);
+			clerks[i].get_last_client().draw();
 			fill = ImColor(255, 0, 0);
 		}
 		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(x1, y1), ImVec2(x2, y2), fill);
@@ -121,7 +152,7 @@ void Bank::draw() {
 	int cx = 30, cy = 280;
 	for (int i = 0; i < clients_queue.size(); ++i) {
 		if (cx + 30 > 1280) cx = 30, cy += 60;
-		clients_queue[i].draw(cx, cy);
+		clients_queue[i].draw();
 		cx += 60;
 	}
 	std::string table = std::to_string(display.first);

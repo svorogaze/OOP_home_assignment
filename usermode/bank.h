@@ -5,7 +5,10 @@
 #include <algorithm>
 class Bank {
 public:
-	void add_client(const Client& c);
+
+	Bank();
+
+	void add_client(Client& c);
 
 	void process_clients();
 
@@ -27,6 +30,11 @@ public:
 	int64_t sum_time = 0;
 	int64_t max_queue_size = 0;
 	int64_t sum_free_clerks = 0;
+	struct Place {
+		int x, y;
+		bool free;
+	};
+	std::vector<Place> places;
 private:
 	
 	std::vector<Client> clients_queue;

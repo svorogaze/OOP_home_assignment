@@ -15,7 +15,9 @@ public:
 
 	int get_number() const;
 
-	void draw(int tx, int ty) const;
+	void draw() const;
+
+	int position_x = 0, position_y = 0;
 
 private:
 	int cost = 0;

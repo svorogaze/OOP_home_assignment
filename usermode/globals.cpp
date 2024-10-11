@@ -9,8 +9,8 @@ namespace Globals {
 	int min_client_time = 2;
 	int max_client_time = 30;
 	int created_clients = 0;
-	int start_delay = 20;
-	int middle_delay = 5;
+	int start_delay = 5;
+	int middle_delay = 20;
 	std::mt19937 random(1337);
 	Bank bank;
 
