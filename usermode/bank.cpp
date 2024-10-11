@@ -58,7 +58,7 @@ int Bank::get_day_length() {
 void Bank::do_one_step() {
 	if (current_time <= get_day_length()) {
 		for (auto c : clerks) {
-			if (c.get_finish_time() < current_time) {
+			if (c.get_finish_time() >= current_time) {
 				sum_free_clerks += 1;
 			}
 		}
