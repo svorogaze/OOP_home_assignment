@@ -174,6 +174,10 @@ void Overlay::render(Bank& bank) {
         if (ImGui::Button("Do month")) {
             bank.do_step((60 * 8 * 5 - 120) * 4);
         }
+        if (ImGui::Button("Reset")) {
+            Globals::today = 0;
+            bank.reset();
+        }
         ImGui::End();
     }
     ImGui::Render();
