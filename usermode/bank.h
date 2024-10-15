@@ -24,23 +24,7 @@ public:
 
 	int get_day_length();
 
-	void reset() {
-		clients_queue.clear();
-		current_time = 0;
-		sum_length = 0;
-		sum_time = 0;
-		max_queue_size = 0;
-		sum_free_clerks = 0;
-		clients_queue.clear();
-		total_profits = 0;
-		processed_clients = 0;
-		lost_profits = 0;
-		next_client_time = 0;
-		display = { 0,0 };
-		for (auto& i : clerks) {
-			i.set_finish_time(0);
-		}
-	}
+	void reset();
 
 	std::vector<Clerk> clerks;
 	int current_time = 0;
