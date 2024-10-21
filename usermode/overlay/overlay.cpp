@@ -189,6 +189,10 @@ void Overlay::render(Bank& bank) {
             Globals::today = 0;
             bank.reset();
         }
+        if (ImGui::Button("Reset")) {
+            Globals::today = 0;
+            bank.reset();
+        }
         ImGui::End();
     }
     ImGui::Render();
