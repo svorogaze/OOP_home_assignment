@@ -9,7 +9,7 @@ Bank::Bank() {
 	places.resize(25);
 	for (int i = 0; i < places.size(); ++i) {
 		while (true) {
-			int randx = Globals::random() % 1000 + 100;
+			int randx = Globals::random() % 600 + 100;
 			int randy = Globals::random() % 300 + 250;
 			int min_dist = 10000000;
 			for (int j = 0; j < i; ++j) {
@@ -178,10 +178,6 @@ void Bank::draw() {
 	ImGui::GetWindowDrawList()->AddText(ImVec2(601, 53), ImColor(0, 0, 0), table.c_str());
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> d0ca3cccc28cf8b50ca80a2758836c4217a38902
 void Bank::reset() {
 	clients_queue.clear();
 	current_time = 0;
@@ -198,8 +194,4 @@ void Bank::reset() {
 	for (auto& i : clerks) {
 		i.set_finish_time(0);
 	}
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> d0ca3cccc28cf8b50ca80a2758836c4217a38902
