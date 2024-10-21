@@ -9,6 +9,7 @@
 #include "globals.hpp"
 int main(int, char**) {
 	Bank bank;
+	bank.status.resize(30);
 	while (true) {
 		int to_sz = Globals::n;
 		while (bank.clerks.size() > to_sz) bank.clerks.pop_back();

@@ -11,6 +11,8 @@ namespace Globals {
 	int created_clients = 0;
 	int start_delay = 5;
 	int middle_delay = 20;
+	int step_time = 1000; //in milliseconds
+	int clerk_width = 70;
 	std::mt19937 random(1337);
 	Bank bank;
 

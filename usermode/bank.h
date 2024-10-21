@@ -3,6 +3,7 @@
 #include "client.h"
 #include "clerk.h"
 #include <algorithm>
+#include <chrono>
 class Bank {
 public:
 
@@ -35,8 +36,16 @@ public:
 		bool free;
 	};
 	std::vector<Place> places;
+	struct MovingClientStatus {
+		int start_x, start_y;
+		int end_x, end_y;
+		std::chrono::milliseconds start_time;
+		std::chrono::milliseconds end_time;
+	};
+	std::vector<MovingClientStatus> status;
+	int update_debt = 0;
+	std::chrono::milliseconds last_update = std::chrono::milliseconds(0);
 private:
-	
 	std::vector<Client> clients_queue;
 	int64_t total_profits = 0;
 	int64_t processed_clients = 0;

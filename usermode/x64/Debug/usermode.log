@@ -1,9 +1,6 @@
-﻿  bank.cpp
-C:\Users\vvzag\source\repos\usermode\usermode\bank.cpp(72,9): warning C4244: 'return': conversion from 'int64_t' to 'int', possible loss of data
-C:\Users\vvzag\source\repos\usermode\usermode\bank.cpp(76,9): warning C4244: 'return': conversion from 'int64_t' to 'int', possible loss of data
-C:\Users\vvzag\source\repos\usermode\usermode\bank.cpp(98,20): warning C4018: '>': signed/unsigned mismatch
-C:\Users\vvzag\source\repos\usermode\usermode\bank.cpp(155,72): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\vvzag\source\repos\usermode\usermode\bank.cpp(155,68): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\vvzag\source\repos\usermode\usermode\bank.cpp(155,56): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\vvzag\source\repos\usermode\usermode\bank.cpp(155,52): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+﻿  overlay.cpp
+C:\Users\vvzag\source\repos\usermode\usermode\overlay\overlay.cpp(285,72): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\vvzag\source\repos\usermode\usermode\overlay\overlay.cpp(285,68): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\vvzag\source\repos\usermode\usermode\overlay\overlay.cpp(285,56): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\vvzag\source\repos\usermode\usermode\overlay\overlay.cpp(285,52): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   usermode.vcxproj -> C:\Users\vvzag\source\repos\usermode\x64\Debug\usermode.exe

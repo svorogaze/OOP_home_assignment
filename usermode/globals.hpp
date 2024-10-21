@@ -11,6 +11,8 @@ namespace Globals {
 	extern int created_clients;
 	extern int start_delay;
 	extern int middle_delay;
+	extern int step_time;
+	extern int clerk_width;
 	extern std::mt19937 random;
 	extern Bank bank;
 	extern int today;

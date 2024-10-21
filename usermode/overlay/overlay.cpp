@@ -7,6 +7,7 @@
 #pragma comment(lib, "d3d11.lib")
 #include "globals.hpp"
 #include <algorithm>
+#include <chrono>
 Overlay overlay;
 // Forward declare message handler from imgui_impl_win32.cpp
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd,
@@ -150,8 +151,18 @@ void Overlay::draw() {
 void Overlay::render(Bank& bank) {
     static std::vector<std::string> days = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
     ImGui::End();
+    auto real_time = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch());
+    int64_t delta = (real_time - bank.last_update).count();
+    if (delta > 1e6) delta = Globals::step_time;
+    while (bank.update_debt > 0 && delta >= Globals::step_time) {
+        delta -= Globals::step_time;
+        bank.update_debt--;
+        bank.do_one_step();
+        bank.last_update = real_time;
+    }
     if (mainmenu) {
         ImGui::Begin("Controls(close by pressing INSERT)");
+        ImGui::SliderInt("Modeling step duration(in ms)", &Globals::step_time, 0, 3000);
         ImGui::SliderInt("N", &Globals::n, 2, 7);
         ImGui::SliderInt("K", &Globals::k, 10, 25);
         ImGui::SliderInt("Step(in minutes)", &Globals::step, 1, 60);
@@ -169,10 +180,12 @@ void Overlay::render(Bank& bank) {
         ImGui::Text("Average length of queue is %f, min length is 0, max length is %d", (float)bank.sum_length / max(bank.sum_time, 1), bank.max_queue_size);
         ImGui::Text("On average %f clerks are working", (long double)bank.sum_free_clerks / max(bank.sum_time, 1));
         if (ImGui::Button("Do one step")) {
-            bank.do_step(Globals::step);
+            bank.update_debt += 1;
+            //bank.do_step(Globals::step);
         }
         if (ImGui::Button("Do month")) {
-            bank.do_step((60 * 8 * 5 - 120) * 4);
+            bank.update_debt += (60 * 8 * 5 - 120) * 4;
+            //bank.do_step((60 * 8 * 5 - 120) * 4);
         }
         ImGui::End();
     }

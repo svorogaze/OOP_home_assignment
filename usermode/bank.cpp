@@ -60,6 +60,15 @@ void Bank::process_clients() {
 			}
 			total_profits += cur_client.get_cost();
 			clerks[i].process_new_client(cur_client, current_time);
+			status[i].start_time = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch());
+			status[i].end_time = status[i].start_time + std::chrono::milliseconds(Globals::step_time);
+			status[i].start_x = cur_client.position_x;
+			status[i].start_y = cur_client.position_y;
+			int x1 = (i * 2) * Globals::clerk_width + Globals::clerk_width;
+			int x2 = (i * 2 + 1) * Globals::clerk_width + Globals::clerk_width;
+			int y2 = 100 + Globals::clerk_width + 30;
+			status[i].end_x = (x1 + x2) / 2;
+			status[i].end_y = y2;
 			processed_clients++;
 			display.first = cur_client.get_number();
 			display.second = i + 1;
@@ -140,25 +149,24 @@ void Bank::do_step(int amount) {
 }
 
 void Bank::draw() {
-	int we = 70;
+	auto real_time = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch());
 	for (int i = 0; i < clerks.size(); ++i) {
-		int x1 = (i * 2) * we + we;
-		int x2 = (i * 2 + 1) * we + we;
-		int y1 = 100, y2 = 100 + we;
+		int x1 = (i * 2) * Globals::clerk_width + Globals::clerk_width;
+		int x2 = (i * 2 + 1) * Globals::clerk_width + Globals::clerk_width;
+		int y1 = 100, y2 = 100 + Globals::clerk_width;
 		ImColor fill = ImColor(0, 255, 0);
 		if (!clerks[i].is_finished(current_time)) {
-			clerks[i].get_last_client().position_x = (x1 + x2) / 2;
-			clerks[i].get_last_client().position_y = y2 + 30; 
+			double coef = (double)(status[i].end_time - real_time).count() / (status[i].end_time - status[i].start_time).count();
+			if (coef < 0) coef = 0;
+			clerks[i].get_last_client().position_x = status[i].end_x - coef * (status[i].end_x - status[i].start_x);
+			clerks[i].get_last_client().position_y = status[i].end_y - coef * (status[i].end_y - status[i].start_y);
 			clerks[i].get_last_client().draw();
 			fill = ImColor(255, 0, 0);
 		}
 		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(x1, y1), ImVec2(x2, y2), fill);
 	}
-	int cx = 30, cy = 280;
 	for (int i = 0; i < clients_queue.size(); ++i) {
-		if (cx + 30 > 1280) cx = 30, cy += 60;
 		clients_queue[i].draw();
-		cx += 60;
 	}
 	std::string table = std::to_string(display.first);
 	table += " to ";
