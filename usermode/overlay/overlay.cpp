@@ -180,7 +180,7 @@ void Overlay::render(Bank& bank) {
         ImGui::Text("Average length of queue is %f, min length is 0, max length is %d", (float)bank.sum_length / max(bank.sum_time, 1), bank.max_queue_size);
         ImGui::Text("On average %f clerks are working", (long double)bank.sum_free_clerks / max(bank.sum_time, 1));
         if (ImGui::Button("Do one step")) {
-            bank.update_debt += 1;
+            bank.update_debt += Globals::step;
         }
         if (ImGui::Button("Do month")) {
             bank.update_debt += (60 * 8 * 5 - 120) * 4;

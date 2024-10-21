@@ -191,6 +191,7 @@ void Bank::reset() {
 	lost_profits = 0;
 	next_client_time = 0;
 	display = { 0,0 };
+	update_debt = 0;
 	for (auto& i : clerks) {
 		i.set_finish_time(0);
 	}
