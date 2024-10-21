@@ -25,6 +25,8 @@ public:
 
 	int get_day_length();
 
+	void reset();
+
 	std::vector<Clerk> clerks;
 	int current_time = 0;
 	int64_t sum_length = 0;

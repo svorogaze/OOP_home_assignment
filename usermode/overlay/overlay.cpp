@@ -181,11 +181,13 @@ void Overlay::render(Bank& bank) {
         ImGui::Text("On average %f clerks are working", (long double)bank.sum_free_clerks / max(bank.sum_time, 1));
         if (ImGui::Button("Do one step")) {
             bank.update_debt += 1;
-            //bank.do_step(Globals::step);
         }
         if (ImGui::Button("Do month")) {
             bank.update_debt += (60 * 8 * 5 - 120) * 4;
-            //bank.do_step((60 * 8 * 5 - 120) * 4);
+        }
+        if (ImGui::Button("Reset")) {
+            Globals::today = 0;
+            bank.reset();
         }
         ImGui::End();
     }

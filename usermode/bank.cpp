@@ -177,3 +177,21 @@ void Bank::draw() {
 	ImGui::GetWindowDrawList()->AddRect(ImVec2(600, 50), ImVec2(680, 70), ImColor(0, 0, 0));
 	ImGui::GetWindowDrawList()->AddText(ImVec2(601, 53), ImColor(0, 0, 0), table.c_str());
 }
+
+void Bank::reset() {
+	clients_queue.clear();
+	current_time = 0;
+	sum_length = 0;
+	sum_time = 0;
+	max_queue_size = 0;
+	sum_free_clerks = 0;
+	clients_queue.clear();
+	total_profits = 0;
+	processed_clients = 0;
+	lost_profits = 0;
+	next_client_time = 0;
+	display = { 0,0 };
+	for (auto& i : clerks) {
+		i.set_finish_time(0);
+	}
+}
