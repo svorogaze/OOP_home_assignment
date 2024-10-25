@@ -193,6 +193,6 @@ void Bank::reset() {
 	display = { 0,0 };
 	update_debt = 0;
 	for (auto& i : clerks) {
-		i.set_finish_time(0);
+		i.set_finish_time(-1);
 	}
 }
